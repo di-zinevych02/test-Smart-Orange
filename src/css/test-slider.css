@@ -1,0 +1,67 @@
+.slider-section{
+  position: relative;
+}
+.header {
+  padding: 24px 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+}
+.nav {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.nav-logo{
+  font-family: "Inter Tight", sans-serif;
+font-weight: 500;
+font-size: 32px;
+line-height: 0.9;
+letter-spacing: -0.04em;
+color: #0a0f13;
+}
+.nav {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+}
+.slider-container {
+  position: relative;
+  /* можна підлаштувати */
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+.slides {
+  display: flex;
+  transition: transform 0.5s ease;
+}
+
+.slide {
+  min-width: 100%;
+  flex-shrink: 0;
+}
+
+.slide img {
+  width: 100%;
+  display: block;
+}
+
+.button-prev,
+.button-next{
+  position: absolute;
+  transform: translateY(-50%);
+top: 50%;
+  background-color: transparent;
+  border: none;
+}
+.button-prev {
+  left: 60px;
+}
+
+.button-next {
+  right: 20px;
+}
+
