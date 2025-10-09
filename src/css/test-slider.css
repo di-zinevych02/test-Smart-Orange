@@ -31,22 +31,30 @@ color: #0a0f13;
   position: relative;
   /* можна підлаштувати */
   margin: 0 auto;
+  width: 100%;
   overflow: hidden;
 }
-
+.slides-list {
+  display: flex;
+    transition: transform 0.5s ease;
+    padding: 0;
+    margin: 0;
+}
 .slides {
   display: flex;
   transition: transform 0.5s ease;
 }
 
 .slide {
-  min-width: 100%;
+  min-width: 100%;/* ширина дорівнює контейнеру */
   flex-shrink: 0;
+    /* не стискається */
 }
 
 .slide img {
   width: 100%;
   display: block;
+  height: auto;
 }
 
 .button-prev,
@@ -56,6 +64,11 @@ color: #0a0f13;
 top: 50%;
   background-color: transparent;
   border: none;
+}
+.button-prev:disabled,
+.button-next:disabled{
+  opacity: 0.5;
+    cursor: not-allowed;
 }
 .button-prev {
   left: 60px;

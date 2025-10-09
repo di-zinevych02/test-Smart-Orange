@@ -3,23 +3,30 @@ document.addEventListener("DOMContentLoaded", () => {
   const slides = document.querySelectorAll(".slide");
   const prevButton = document.getElementById("prev");
   const nextButton = document.getElementById("next");
-  let currentIndex = 0;
-
-  function showSlide(index) {
-    if (index < 0) {
-      currentIndex = slides.length - 1;
-    } else if (index >= slides.length) {
-      currentIndex = 0;
-    } else {
-      currentIndex = index;
+  let currentSlide = 0;
+  const totalSlides = slides.length;
+  const updateSliderPosition = () => {
+    sliderWrapper.style.transform = `translateX(-${currentSlide * 100}%)`;
+  };
+  const updateButtons = () => {
+    prevButton.disabled = currentSlide === 0;
+    nextButton.disabled = currentSlide === totalSlides - 1;
+  };
+  const goToNextSlide = () => {
+    if (currentSlide < totalSlides - 1) {
+      currentSlide++;
+      updateSliderPosition();
+      updateButtons();
     }
-    const offset = -currentIndex * 100;
-    document.querySelector("slides").style.transform = `translateX(${offset}%)`;
-  }
-  prevButton.addEventListener("click", () => {
-    showSlide(currentIndex - 1);
-  });
-  nextButton.addEventListener("click", () => {
-    showSlide(currentIndex + 1);
-  })
-  });
+  };
+  const goToPrevSlide = () => {
+    if (currentSlide > 0) {
+      currentSlide--;
+      updateSliderPosition();
+      updateButtons();
+    }
+  };
+  nextButton.addEventListener('click', goToNextSlide);
+  prevButton.addEventListener('click', goToPrevSlide);
+  updateButtons();
+});
